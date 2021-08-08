@@ -13,35 +13,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wayfinder.app.entity.Event;
-import com.wayfinder.app.service.EventService;
+import com.wayfinder.app.entity.User;
+import com.wayfinder.app.service.UserService;
 
 @RestController
-@RequestMapping("/event")
-public class EventController {
+@RequestMapping("/user")
+public class UserController {
 
 	@Resource 
-	EventService eventService;
+	UserService userService;
 	
-	@GetMapping(value = "/all")
-	public List<Event> getEvents() {
-		return eventService.findAll();
+	@GetMapping(value = "/{id}")
+	public User getEvents(@PathVariable String id) {
+		return userService.getUser(id);
 	}
 	@PostMapping(value = "/new")
-	public void createEvent(@RequestBody Event eve) {
-		eventService.insertEvent(eve);
+	public void createEvent(@RequestBody User user) {
+		userService.insertUser(user);
 	}
 	@PutMapping(value = "/update")
-	public void updateEvent(@RequestBody Event eve) {
-		eventService.updateEvent(eve);
+	public void updateEvent(@RequestBody User user) {
+		userService.updateUser(user);
 	}
 	@PutMapping(value = "/executeUpdate")
-	public void executeUpdateEvent(@RequestBody Event eve) {
-		eventService.executeUpdateEvent(eve);
-	}
-	@DeleteMapping(value = "/{id}")
-	public void deleteEvent(@PathVariable String id) {
-		eventService.deleteEvent(id);
+	public void executeUpdateEvent(@RequestBody User user) {
+		userService.executeUpdateUser(user);
 	}
 	
 }

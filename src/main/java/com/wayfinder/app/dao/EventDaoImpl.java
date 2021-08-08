@@ -22,7 +22,7 @@ public class EventDaoImpl implements EventDao{
 	
 	public EventDaoImpl(NamedParameterJdbcTemplate template) {  
         this.template = template;  
-}  
+	}  
 	NamedParameterJdbcTemplate template;  
 
 	@Override
@@ -31,29 +31,29 @@ public class EventDaoImpl implements EventDao{
 	}
 	@Override
 	public void insertEvent(Event eve) {
-		 final String sql = "insert into events(eventId, eventName, eventAddress, eventEmail) values(:eventId,:eventName,:eventEmail,:eventAddress)";
+		final String sql = "insert into events(eventId, eventName, eventAddress, eventEmail) values(:eventId,:eventName,:eventEmail,:eventAddress)";
 		 
-	        KeyHolder holder = new GeneratedKeyHolder();
-	        SqlParameterSource param = new MapSqlParameterSource()
-					.addValue("eventId", eve.getEventId())
-					.addValue("eventName", eve.getEventName())
-					.addValue("eventEmail", eve.getEventEmail())
-					.addValue("eventAddress", eve.getEventAddress());
-	        template.update(sql,param, holder);
+        KeyHolder holder = new GeneratedKeyHolder();
+        SqlParameterSource param = new MapSqlParameterSource()
+				.addValue("eventId", eve.getEventId())
+				.addValue("eventName", eve.getEventName())
+				.addValue("eventEmail", eve.getEventEmail())
+				.addValue("eventAddress", eve.getEventAddress());
+        template.update(sql,param,holder);
 	 
 	}
 	
 	@Override
 	public void updateEvent(Event eve) {
-		 final String sql = "update events set eventName=:eventName, eventAddress=:eventAddress, eventEmail=:eventEmail where eventId=:eventId";
+		final String sql = "update events set eventName=:eventName, eventAddress=:eventAddress, eventEmail=:eventEmail where eventId=:eventId";
 		 
-	        KeyHolder holder = new GeneratedKeyHolder();
-	        SqlParameterSource param = new MapSqlParameterSource()
-					.addValue("eventId", eve.getEventId())
-					.addValue("eventName", eve.getEventName())
-					.addValue("eventEmail", eve.getEventEmail())
-					.addValue("eventAddress", eve.getEventAddress());
-	        template.update(sql,param, holder);
+        KeyHolder holder = new GeneratedKeyHolder();
+        SqlParameterSource param = new MapSqlParameterSource()
+				.addValue("eventId", eve.getEventId())
+				.addValue("eventName", eve.getEventName())
+				.addValue("eventEmail", eve.getEventEmail())
+				.addValue("eventAddress", eve.getEventAddress());
+        template.update(sql,param,holder);
 	 
 	}
 	
@@ -80,12 +80,12 @@ public class EventDaoImpl implements EventDao{
 	}
 	
 	@Override
-	public void deleteEvent(Event eve) {
+	public void deleteEvent(String id) {
 		 final String sql = "delete from events where eventId=:eventId";
 			 
 
 		 Map<String,Object> map=new HashMap<String,Object>();  
-		 map.put("eventId", eve.getEventId());
+		 map.put("eventId", id);
 	
 		 template.execute(sql,map,new PreparedStatementCallback<Object>() {  
 			    @Override  

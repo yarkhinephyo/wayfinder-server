@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS events, users;
 
 CREATE TABLE events
 (
@@ -7,4 +7,11 @@ CREATE TABLE events
   eventAddress varchar(100) DEFAULT NULL,
   eventEmail varchar(100) DEFAULT NULL,
   PRIMARY KEY (eventId)
+);
+
+CREATE TABLE users
+(
+  userName varchar(50) NOT NULL,
+  userId varchar(40) NOT NULL,
+  PRIMARY KEY (userId)
 );
