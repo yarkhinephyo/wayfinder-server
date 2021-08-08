@@ -15,58 +15,58 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.wayfinder.app.entity.Employee;
-import com.wayfinder.app.mapper.EmployeeRowMapper;
+import com.wayfinder.app.entity.Event;
+import com.wayfinder.app.mapper.EventRowMapper;
 @Repository
-public class EmployeeDaoImpl implements EmployeeDao{
+public class EventDaoImpl implements EventDao{
 	
-	public EmployeeDaoImpl(NamedParameterJdbcTemplate template) {  
+	public EventDaoImpl(NamedParameterJdbcTemplate template) {  
         this.template = template;  
 }  
 	NamedParameterJdbcTemplate template;  
 
 	@Override
-	public List<Employee> findAll() {
-		return template.query("select * from employee", new EmployeeRowMapper());
+	public List<Event> findAll() {
+		return template.query("select * from events", new EventRowMapper());
 	}
 	@Override
-	public void insertEmployee(Employee emp) {
-		 final String sql = "insert into employee(employeeId, employeeName , employeeAddress,employeeEmail) values(:employeeId,:employeeName,:employeeEmail,:employeeAddress)";
+	public void insertEvent(Event eve) {
+		 final String sql = "insert into events(eventId, eventName, eventAddress, eventEmail) values(:eventId,:eventName,:eventEmail,:eventAddress)";
 		 
 	        KeyHolder holder = new GeneratedKeyHolder();
 	        SqlParameterSource param = new MapSqlParameterSource()
-					.addValue("employeeId", emp.getEmployeeId())
-					.addValue("employeeName", emp.getEmployeeName())
-					.addValue("employeeEmail", emp.getEmployeeEmail())
-					.addValue("employeeAddress", emp.getEmployeeAddress());
+					.addValue("eventId", eve.getEventId())
+					.addValue("eventName", eve.getEventName())
+					.addValue("eventEmail", eve.getEventEmail())
+					.addValue("eventAddress", eve.getEventAddress());
 	        template.update(sql,param, holder);
 	 
 	}
 	
 	@Override
-	public void updateEmployee(Employee emp) {
-		 final String sql = "update employee set employeeName=:employeeName, employeeAddress=:employeeAddress, employeeEmail=:employeeEmail where employeeId=:employeeId";
+	public void updateEvent(Event eve) {
+		 final String sql = "update events set eventName=:eventName, eventAddress=:eventAddress, eventEmail=:eventEmail where eventId=:eventId";
 		 
 	        KeyHolder holder = new GeneratedKeyHolder();
 	        SqlParameterSource param = new MapSqlParameterSource()
-					.addValue("employeeId", emp.getEmployeeId())
-					.addValue("employeeName", emp.getEmployeeName())
-					.addValue("employeeEmail", emp.getEmployeeEmail())
-					.addValue("employeeAddress", emp.getEmployeeAddress());
+					.addValue("eventId", eve.getEventId())
+					.addValue("eventName", eve.getEventName())
+					.addValue("eventEmail", eve.getEventEmail())
+					.addValue("eventAddress", eve.getEventAddress());
 	        template.update(sql,param, holder);
 	 
 	}
 	
 	@Override
-	public void executeUpdateEmployee(Employee emp) {
-		 final String sql = "update employee set employeeName=:employeeName, employeeAddress=:employeeAddress, employeeEmail=:employeeEmail where employeeId=:employeeId";
+	public void executeUpdateEvent(Event eve) {
+		 final String sql = "update events set eventName=:eventName, eventAddress=:eventAddress, eventEmail=:eventEmail where eventId=:eventId";
 			 
 
 		 Map<String,Object> map=new HashMap<String,Object>();  
-		 map.put("employeeId", emp.getEmployeeId());
-		 map.put("employeeName", emp.getEmployeeName());
-		 map.put("employeeEmail", emp.getEmployeeEmail());
-		 map.put("employeeAddress", emp.getEmployeeAddress());
+		 map.put("eventId", eve.getEventId());
+		 map.put("eventName", eve.getEventName());
+		 map.put("eventEmail", eve.getEventEmail());
+		 map.put("eventAddress", eve.getEventAddress());
 	
 		 template.execute(sql,map,new PreparedStatementCallback<Object>() {  
 			    @Override  
@@ -80,12 +80,12 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 	
 	@Override
-	public void deleteEmployee(Employee emp) {
-		 final String sql = "delete from employee where employeeId=:employeeId";
+	public void deleteEvent(Event eve) {
+		 final String sql = "delete from events where eventId=:eventId";
 			 
 
 		 Map<String,Object> map=new HashMap<String,Object>();  
-		 map.put("employeeId", emp.getEmployeeId());
+		 map.put("eventId", eve.getEventId());
 	
 		 template.execute(sql,map,new PreparedStatementCallback<Object>() {  
 			    @Override  

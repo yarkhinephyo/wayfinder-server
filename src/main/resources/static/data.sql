@@ -1,0 +1,1 @@
+insert into events(eventId, eventName, eventAddress, eventEmail) values('1', 'Jack', 'USA', 'jack@gmail.com');
