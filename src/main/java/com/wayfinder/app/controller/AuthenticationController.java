@@ -1,6 +1,7 @@
 package com.wayfinder.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -8,19 +9,20 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wayfinder.app.config.JwtTokenUtil;
 import com.wayfinder.app.entity.JwtRequest;
 import com.wayfinder.app.entity.JwtResponse;
-import com.wayfinder.app.service.JwtUserDetailsService;
+import com.wayfinder.app.service.UserDetailsServiceImpl;
 
 @CrossOrigin
 @RestController
-public class JwtAuthenticationController {
+@RequestMapping("/auth")
+public class AuthenticationController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -29,9 +31,10 @@ public class JwtAuthenticationController {
 	private JwtTokenUtil jwtTokenUtil;
 
 	@Autowired
-	private JwtUserDetailsService userDetailsService;
+	private UserDetailsServiceImpl userDetailsService;
 
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+
+	@PostMapping(value = "/authenticate")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -42,6 +45,13 @@ public class JwtAuthenticationController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
 		return ResponseEntity.ok(new JwtResponse(token));
+	}
+	
+	@PostMapping(value = "/signup")
+	public ResponseEntity<?> signUp(@RequestBody JwtRequest signUpRequest) throws Exception {
+		
+		userDetailsService.insertUser(signUpRequest);
+		return new ResponseEntity<>(null, HttpStatus.CREATED);
 	}
 
 	private void authenticate(String username, String password) throws Exception {

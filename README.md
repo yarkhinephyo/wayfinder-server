@@ -15,6 +15,8 @@ Edit the database configurations accordingly at `src/main/resources/application-
 spring.datasource.url=
 spring.datasource.username=
 spring.datasource.password=
+
+jwt.secret=
 ```
 
 To run a Spring Boot application, execute the `main` method in the `com.wayfinder.app.Application` class from your IDE.

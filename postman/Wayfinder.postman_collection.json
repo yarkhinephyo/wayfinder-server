@@ -8,6 +8,16 @@
 		{
 			"name": "Get events",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -28,6 +38,16 @@
 		{
 			"name": "Create event",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -57,6 +77,16 @@
 		{
 			"name": "Update event",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -86,6 +116,16 @@
 		{
 			"name": "Delete event",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
@@ -104,43 +144,13 @@
 			"response": []
 		},
 		{
-			"name": "Get User",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{AccessToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/user/jack",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user",
-						"jack"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Create User",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userName\": \"Julia\",\r\n    \"userPassword\": \"imjulia\"\r\n}",
+					"raw": "{\r\n    \"username\": \"julia\",\r\n    \"password\": \"iamjulia\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -148,15 +158,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/user/new",
+					"raw": "http://localhost:8080/auth/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"user",
-						"new"
+						"auth",
+						"signup"
 					]
 				}
 			},
@@ -177,12 +187,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/authenticate",
+					"raw": "localhost:8080/auth/authenticate",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"auth",
 						"authenticate"
 					]
 				}
