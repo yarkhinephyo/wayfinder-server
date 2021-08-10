@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.wayfinder.app.dao.EventDao;
 import com.wayfinder.app.entity.Event;
-@Component
+@Service
 public class EventServiceImpl implements EventService{
 	@Resource 
 	EventDao eventDao;

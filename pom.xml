@@ -13,14 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>app</name>
 	<description>Server for Wayfinder</description>
-	
-	<repositories>
-	    <repository>
-	        <id>sz-maven-public</id>
-	        <name>sz-maven-public</name>
-	        <url>https://developer.huawei.com/repo/</url>
-	    </repository>
-	</repositories>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -46,13 +38,21 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>com.huawei.agconnect.server</groupId>
-		    <artifactId>agconnect-auth</artifactId>
-		    <version>1.2.0.300</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

@@ -12,6 +12,6 @@ CREATE TABLE events
 CREATE TABLE users
 (
   userName varchar(50) NOT NULL,
-  userId varchar(40) NOT NULL,
-  PRIMARY KEY (userId)
+  userPassword varchar(100) NOT NULL,
+  PRIMARY KEY (userName)
 );

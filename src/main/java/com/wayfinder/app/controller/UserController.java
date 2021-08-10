@@ -1,10 +1,8 @@
 package com.wayfinder.app.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wayfinder.app.entity.User;
 import com.wayfinder.app.service.UserService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -23,21 +22,13 @@ public class UserController {
 	@Resource 
 	UserService userService;
 	
-	@GetMapping(value = "/{id}")
-	public User getEvents(@PathVariable String id) {
-		return userService.getUser(id);
+	@GetMapping(value = "/{userName}")
+	public User getUser(@PathVariable String userName) {
+		return userService.getUser(userName);
 	}
 	@PostMapping(value = "/new")
-	public void createEvent(@RequestBody User user) {
+	public void createUser(@RequestBody User user) {
 		userService.insertUser(user);
-	}
-	@PutMapping(value = "/update")
-	public void updateEvent(@RequestBody User user) {
-		userService.updateUser(user);
-	}
-	@PutMapping(value = "/executeUpdate")
-	public void executeUpdateEvent(@RequestBody User user) {
-		userService.executeUpdateUser(user);
 	}
 	
 }

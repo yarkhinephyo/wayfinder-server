@@ -106,10 +106,20 @@
 		{
 			"name": "Get User",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/user/5429584523",
+					"raw": "http://localhost:8080/user/jack",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -117,7 +127,7 @@
 					"port": "8080",
 					"path": [
 						"user",
-						"5429584523"
+						"jack"
 					]
 				}
 			},
@@ -130,7 +140,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": \"5464575464\",\r\n    \"userName\": \"Julia\"\r\n}",
+					"raw": "{\r\n    \"userName\": \"Julia\",\r\n    \"userPassword\": \"imjulia\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -153,13 +163,13 @@
 			"response": []
 		},
 		{
-			"name": "Update User",
+			"name": "Authenticate",
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": \"5429584523\",\r\n    \"userName\": \"Jackie\"\r\n}",
+					"raw": "{\r\n    \"username\": \"jack\",\r\n    \"password\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -167,15 +177,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/user/executeUpdate",
-					"protocol": "http",
+					"raw": "localhost:8080/authenticate",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"user",
-						"executeUpdate"
+						"authenticate"
 					]
 				}
 			},
