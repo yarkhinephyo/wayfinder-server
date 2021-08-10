@@ -2,15 +2,16 @@ package com.wayfinder.app.entity;
 
 public class Event {
 
-	String eventId;
+	int eventId;
 	String eventName;
+	String userName;
 	String eventEmail;
 	String eventAddress;
 
-	public String getEventId() {
+	public int getEventId() {
 		return eventId;
 	}
-	public void setEventId(String eventId) {
+	public void setEventId(int eventId) {
 		this.eventId = eventId;
 	}
 	public String getEventName() {
@@ -18,6 +19,12 @@ public class Event {
 	}
 	public void setEventName(String eventName) {
 		this.eventName = eventName;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getEventEmail() {
 		return eventEmail;

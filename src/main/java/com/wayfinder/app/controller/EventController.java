@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +33,7 @@ public class EventController {
 	}
 	@PostMapping(value = "/new")
 	public void createEvent(@RequestBody Event eve) {
+		eve.setUserName(getUsernameFromSpringContext());
 		eventService.insertEvent(eve);
 	}
 	@PutMapping(value = "/update")
@@ -42,8 +45,13 @@ public class EventController {
 		eventService.executeUpdateEvent(eve);
 	}
 	@DeleteMapping(value = "/{id}")
-	public void deleteEvent(@PathVariable String id) {
+	public void deleteEvent(@PathVariable int id) {
 		eventService.deleteEvent(id);
+	}
+	
+	private String getUsernameFromSpringContext() {
+		User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return userDetails.getUsername();
 	}
 	
 }

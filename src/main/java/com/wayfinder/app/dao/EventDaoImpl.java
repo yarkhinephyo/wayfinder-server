@@ -31,11 +31,12 @@ public class EventDaoImpl implements EventDao{
 	}
 	@Override
 	public void insertEvent(Event eve) {
-		final String sql = "insert into events(eventName, eventAddress, eventEmail) values(:eventName,:eventEmail,:eventAddress)";
+		final String sql = "insert into events(eventName, userName, eventAddress, eventEmail) values(:eventName,:userName,:eventEmail,:eventAddress)";
 		 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
 				.addValue("eventName", eve.getEventName())
+				.addValue("userName", eve.getUserName())
 				.addValue("eventEmail", eve.getEventEmail())
 				.addValue("eventAddress", eve.getEventAddress());
         template.update(sql,param,holder);
@@ -79,7 +80,7 @@ public class EventDaoImpl implements EventDao{
 	}
 	
 	@Override
-	public void deleteEvent(String id) {
+	public void deleteEvent(int id) {
 		 final String sql = "delete from events where eventId=:eventId";
 			 
 

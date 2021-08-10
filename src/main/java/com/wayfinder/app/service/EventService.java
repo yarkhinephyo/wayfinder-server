@@ -13,6 +13,6 @@ public interface EventService {
 
 	void executeUpdateEvent(Event eve);
 
-	void deleteEvent(String id);
+	void deleteEvent(int id);
 	
 }
