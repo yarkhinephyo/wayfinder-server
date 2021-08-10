@@ -48,7 +48,7 @@ public class AuthenticationController {
 	}
 	
 	@PostMapping(value = "/signup")
-	public ResponseEntity<?> signUp(@RequestBody JwtRequest signUpRequest) throws Exception {
+	public ResponseEntity<?> signUp(@RequestBody JwtRequest signUpRequest) {
 		
 		userDetailsService.insertUser(signUpRequest);
 		return new ResponseEntity<>(null, HttpStatus.CREATED);

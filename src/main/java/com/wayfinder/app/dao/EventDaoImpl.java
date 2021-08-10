@@ -31,11 +31,10 @@ public class EventDaoImpl implements EventDao{
 	}
 	@Override
 	public void insertEvent(Event eve) {
-		final String sql = "insert into events(eventId, eventName, eventAddress, eventEmail) values(:eventId,:eventName,:eventEmail,:eventAddress)";
+		final String sql = "insert into events(eventName, eventAddress, eventEmail) values(:eventName,:eventEmail,:eventAddress)";
 		 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
-				.addValue("eventId", eve.getEventId())
 				.addValue("eventName", eve.getEventName())
 				.addValue("eventEmail", eve.getEventEmail())
 				.addValue("eventAddress", eve.getEventAddress());
