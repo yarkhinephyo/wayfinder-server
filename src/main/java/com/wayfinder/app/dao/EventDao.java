@@ -10,8 +10,6 @@ public interface EventDao {
 
 	void insertEvent(Event eve);
 
-	void updateEvent(Event eve);
-
 	void executeUpdateEvent(Event eve);
 
 	public void deleteEvent(int id);

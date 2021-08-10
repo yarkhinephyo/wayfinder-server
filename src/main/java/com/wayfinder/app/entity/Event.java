@@ -5,9 +5,14 @@ public class Event {
 	int eventId;
 	String eventName;
 	String userName;
-	String eventEmail;
+	String eventDesc;
+	long eventUnixTime;
+	long eventUnixExpiry;
+	String eventCategory;
+	String eventSubCategory;
+	String eventImageURL;
 	String eventAddress;
-
+	
 	public int getEventId() {
 		return eventId;
 	}
@@ -26,11 +31,41 @@ public class Event {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getEventEmail() {
-		return eventEmail;
+	public String getEventDesc() {
+		return eventDesc;
 	}
-	public void setEventEmail(String eventEmail) {
-		this.eventEmail = eventEmail;
+	public void setEventDesc(String eventDesc) {
+		this.eventDesc = eventDesc;
+	}
+	public long getEventUnixTime() {
+		return eventUnixTime;
+	}
+	public void setEventUnixTime(long eventUnixTime) {
+		this.eventUnixTime = eventUnixTime;
+	}
+	public long getEventUnixExpiry() {
+		return eventUnixExpiry;
+	}
+	public void setEventUnixExpiry(long eventUnixExpiry) {
+		this.eventUnixExpiry = eventUnixExpiry;
+	}
+	public String getEventCategory() {
+		return eventCategory;
+	}
+	public void setEventCategory(String eventCategory) {
+		this.eventCategory = eventCategory;
+	}
+	public String getEventSubCategory() {
+		return eventSubCategory;
+	}
+	public void setEventSubCategory(String eventSubCategory) {
+		this.eventSubCategory = eventSubCategory;
+	}
+	public String getEventImageURL() {
+		return eventImageURL;
+	}
+	public void setEventImageURL(String eventImageURL) {
+		this.eventImageURL = eventImageURL;
 	}
 	public String getEventAddress() {
 		return eventAddress;
@@ -38,5 +73,6 @@ public class Event {
 	public void setEventAddress(String eventAddress) {
 		this.eventAddress = eventAddress;
 	}
+
 	
 }

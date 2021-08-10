@@ -22,10 +22,6 @@ public class EventServiceImpl implements EventService{
 		eventDao.insertEvent(eve);
 	}
 	@Override
-	public void updateEvent(Event eve) {
-		eventDao.updateEvent(eve);
-	}
-	@Override
 	public void executeUpdateEvent(Event eve) {
 		eventDao.executeUpdateEvent(eve);
 	}

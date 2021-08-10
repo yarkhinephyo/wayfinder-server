@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,21 +34,19 @@ public class EventController {
 		return eventService.findAll();
 	}
 	@PostMapping(value = "/new")
-	public void createEvent(@RequestBody Event eve) {
+	public ResponseEntity<?> createEvent(@RequestBody Event eve) {
 		eve.setUserName(getUsernameFromSpringContext());
 		eventService.insertEvent(eve);
-	}
-	@PutMapping(value = "/update")
-	public void updateEvent(@RequestBody Event eve) {
-		eventService.updateEvent(eve);
+		return new ResponseEntity<>(null, HttpStatus.CREATED);
 	}
 	@PutMapping(value = "/executeUpdate")
 	public void executeUpdateEvent(@RequestBody Event eve) {
 		eventService.executeUpdateEvent(eve);
 	}
 	@DeleteMapping(value = "/{id}")
-	public void deleteEvent(@PathVariable int id) {
+	public ResponseEntity<?> deleteEvent(@PathVariable int id) {
 		eventService.deleteEvent(id);
+		return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
 	}
 	
 	private String getUsernameFromSpringContext() {

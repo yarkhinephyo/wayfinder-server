@@ -9,8 +9,6 @@ public interface EventService {
 
 	void insertEvent(Event eve);
 
-	void updateEvent(Event eve);
-
 	void executeUpdateEvent(Event eve);
 
 	void deleteEvent(int id);

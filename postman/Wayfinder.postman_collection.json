@@ -52,7 +52,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"eventId\": \"2\",\r\n    \"eventName\": \"Fair\",\r\n    \"eventEmail\": \"careerFair@gmail.com\",\r\n    \"eventAddress\": \"SGP\"\r\n}",
+					"raw": "{\r\n    \"eventName\": \"Running\",\r\n    \"eventDesc\": \"Go running around marina bay\",\r\n    \"eventUnixTime\": 1628575754,\r\n    \"eventUnixExpiry\": 1633414345,\r\n    \"eventCategory\": \"community\",\r\n    \"eventSubCategory\": \"outdoor community adventure\",\r\n    \"eventImageURL\": \"https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/recreation-leisure/marina-bay-sands-carousel01-square.jpg\",\r\n    \"eventAddress\": \"event@running.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -91,7 +91,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"employeeId\": \"1\",\r\n    \"employeeName\": \"FunJump\",\r\n    \"employeeEmail\": \"fun@jump.com\",\r\n    \"employeeAddress\": \"USA\"\r\n}",
+					"raw": "{\r\n    \"eventId\": 1,\r\n    \"eventName\": \"Fishing Again\",\r\n    \"eventDesc\": \"Go fishing another time\",\r\n    \"eventUnixTime\": 1628572754,\r\n    \"eventUnixExpiry\": 1633814345,\r\n    \"eventCategory\": \"family\",\r\n    \"eventSubCategory\": \"weekend family outing\",\r\n    \"eventImageURL\": \"https://www.takemefishing.org/getmedia/300fa903-a2d3-4a30-a01c-3b994e4846ea/best-fishing-times-twitter.jpg?width=1200&height=675&ext=.jpg\",\r\n    \"eventAddress\": \"1.23424,1.43543\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,7 +144,7 @@
 			"response": []
 		},
 		{
-			"name": "Create User",
+			"name": "Sign up",
 			"request": {
 				"method": "POST",
 				"header": [],

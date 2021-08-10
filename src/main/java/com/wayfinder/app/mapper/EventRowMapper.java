@@ -11,14 +11,19 @@ public class EventRowMapper implements RowMapper<Event> {
 
 	@Override
 	public Event mapRow(ResultSet rs, int arg1) throws SQLException {
-		Event emp = new Event();
-		emp.setEventId(rs.getInt("eventId"));
-		emp.setEventName(rs.getString("eventName"));
-		emp.setUserName(rs.getString("userName"));
-		emp.setEventEmail(rs.getString("eventEmail"));
-		emp.setEventAddress(rs.getString("eventAddress"));
+		Event eve = new Event();
+		eve.setEventId(rs.getInt("eventId"));
+		eve.setEventName(rs.getString("eventName"));
+		eve.setUserName(rs.getString("userName"));
+		eve.setEventDesc(rs.getString("eventDesc"));
+		eve.setEventUnixTime(rs.getLong("eventUnixTime"));
+		eve.setEventUnixExpiry(rs.getLong("eventUnixExpiry"));
+		eve.setEventCategory(rs.getString("eventCategory"));
+		eve.setEventSubCategory(rs.getString("eventSubCategory"));
+		eve.setEventImageURL(rs.getString("eventImageURL"));
+		eve.setEventAddress(rs.getString("eventAddress"));
  
-        return emp;
+        return eve;
 	}
 
 

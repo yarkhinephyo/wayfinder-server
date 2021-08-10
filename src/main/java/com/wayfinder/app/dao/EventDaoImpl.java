@@ -31,27 +31,19 @@ public class EventDaoImpl implements EventDao{
 	}
 	@Override
 	public void insertEvent(Event eve) {
-		final String sql = "insert into events(eventName, userName, eventAddress, eventEmail) values(:eventName,:userName,:eventEmail,:eventAddress)";
+		final String sql = "insert into events(userName, eventName, eventDesc, eventUnixTime, eventUnixExpiry, eventCategory, eventSubCategory, eventImageURL, eventAddress) "
+				+ "values(:userName,:eventName,:eventDesc,:eventUnixTime,:eventUnixExpiry,:eventCategory,:eventSubCategory,:eventImageURL,:eventAddress)";
 		 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
+        		.addValue("userName", eve.getUserName()) // UserName only during creation
 				.addValue("eventName", eve.getEventName())
-				.addValue("userName", eve.getUserName())
-				.addValue("eventEmail", eve.getEventEmail())
-				.addValue("eventAddress", eve.getEventAddress());
-        template.update(sql,param,holder);
-	 
-	}
-	
-	@Override
-	public void updateEvent(Event eve) {
-		final String sql = "update events set eventName=:eventName, eventAddress=:eventAddress, eventEmail=:eventEmail where eventId=:eventId";
-		 
-        KeyHolder holder = new GeneratedKeyHolder();
-        SqlParameterSource param = new MapSqlParameterSource()
-				.addValue("eventId", eve.getEventId())
-				.addValue("eventName", eve.getEventName())
-				.addValue("eventEmail", eve.getEventEmail())
+				.addValue("eventDesc", eve.getEventDesc())
+				.addValue("eventUnixTime", eve.getEventUnixTime())
+				.addValue("eventUnixExpiry", eve.getEventUnixExpiry())
+				.addValue("eventCategory", eve.getEventCategory())
+				.addValue("eventSubCategory", eve.getEventSubCategory())
+				.addValue("eventImageURL", eve.getEventImageURL())
 				.addValue("eventAddress", eve.getEventAddress());
         template.update(sql,param,holder);
 	 
@@ -59,14 +51,20 @@ public class EventDaoImpl implements EventDao{
 	
 	@Override
 	public void executeUpdateEvent(Event eve) {
-		 final String sql = "update events set eventName=:eventName, eventAddress=:eventAddress, eventEmail=:eventEmail where eventId=:eventId";
-			 
+		 final String sql = "update events set eventName=:eventName, eventDesc=:eventDesc, eventUnixTime=:eventUnixTime, eventUnixExpiry=:eventUnixExpiry, "
+		 		+ "eventCategory=:eventCategory, eventSubCategory=:eventSubCategory, eventImageURL=:eventImageURL, eventAddress=:eventAddress "
+		 		+ "where eventId=:eventId";
 
 		 Map<String,Object> map=new HashMap<String,Object>();  
 		 map.put("eventId", eve.getEventId());
 		 map.put("eventName", eve.getEventName());
-		 map.put("eventEmail", eve.getEventEmail());
-		 map.put("eventAddress", eve.getEventAddress());
+		 map.put("eventDesc", eve.getEventDesc());
+		 map.put("eventUnixTime", eve.getEventUnixTime());
+		 map.put("eventUnixExpiry", eve.getEventUnixExpiry());
+		 map.put("eventCategory", eve.getEventCategory());
+		 map.put("eventSubCategory", eve.getEventSubCategory());
+		 map.put("eventImageURL", eve.getEventImageURL());
+		 map.put("eventAddress", eve.getEventAddress());;
 	
 		 template.execute(sql,map,new PreparedStatementCallback<Object>() {  
 			    @Override  
