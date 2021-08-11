@@ -6,7 +6,7 @@ Do not require the bearer token in the header.
 | Endpoint                  | Description                                      |
 | ------------------------- | ------------------------------------------------ |
 | POST /auth/authenticate   | Retrieves an access token with user credentials  |
-| POST /auth/signup         | Add user to database                             |
+| POST /auth/signup         | Adds user to database                            |
 
 ### Event Endpoints
 Require the bearer token in the header.
@@ -16,7 +16,7 @@ Require the bearer token in the header.
 | GET /event/all           | Retrieves all events in the database         |
 | POST /event/new          | Adds a new event                             |
 | PUT /event/executeUpdate | Updates an event                             |
-| DELETE /event/{eventI    | Deletes an event                            |
+| DELETE /event/{eventId}  | Deletes an event                             |
 
 ### Comment Endpoints
 Require the bearer token in the header.
