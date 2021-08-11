@@ -19,9 +19,10 @@ CREATE TABLE events
   eventSubCategory varchar(50) NOT NULL,
   eventImageURL varchar(300) NOT NULL,
   eventAddress varchar(100) NOT NULL,
-  PRIMARY KEY (eventId),
-  CONSTRAINT fk_event_user FOREIGN KEY (userName) REFERENCES users (userName)
+  PRIMARY KEY (eventId)
 );
+
+ALTER TABLE events ADD CONSTRAINT fk_event_user FOREIGN KEY (userName) REFERENCES users (userName) ON DELETE CASCADE;
 
 CREATE TABLE comments
 (
@@ -30,7 +31,8 @@ CREATE TABLE comments
   eventId integer NOT NULL,
   commentUnixTime bigint NOT NULL,
   commentString varchar(300) NOT NULL,
-  PRIMARY KEY (commentId),
-  CONSTRAINT fk_comment_event FOREIGN KEY (eventId) REFERENCES events (eventId),
-  CONSTRAINT fk_comment_user FOREIGN KEY (commenterName) REFERENCES users (userName)
+  PRIMARY KEY (commentId)
 );
+
+ALTER TABLE comments ADD CONSTRAINT fk_comment_event FOREIGN KEY (eventId) REFERENCES events (eventId) ON DELETE CASCADE;
+ALTER TABLE comments ADD CONSTRAINT fk_comment_user FOREIGN KEY (commenterName) REFERENCES users (userName) ON DELETE CASCADE;
