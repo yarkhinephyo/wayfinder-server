@@ -52,7 +52,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"eventName\": \"Running\",\r\n    \"eventDesc\": \"Go running around marina bay\",\r\n    \"eventUnixTime\": 1628575754,\r\n    \"eventUnixExpiry\": 1633414345,\r\n    \"eventCategory\": \"community\",\r\n    \"eventSubCategory\": \"outdoor community adventure\",\r\n    \"eventImageURL\": \"https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/recreation-leisure/marina-bay-sands-carousel01-square.jpg\",\r\n    \"eventAddress\": \"event@running.com\"\r\n}",
+					"raw": "{\r\n    \"eventId\": 1,\r\n    \"commentString\": \"This is a cool idea\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -60,14 +60,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/event/new",
+					"raw": "http://localhost:8080/comment/new",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"event",
+						"comment",
 						"new"
 					]
 				}
@@ -195,6 +195,106 @@
 					"path": [
 						"auth",
 						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comment/event/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comment",
+						"event",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eventName\": \"Running\",\r\n    \"eventDesc\": \"Go running around marina bay\",\r\n    \"eventUnixTime\": 1628575754,\r\n    \"eventUnixExpiry\": 1633414345,\r\n    \"eventCategory\": \"community\",\r\n    \"eventSubCategory\": \"outdoor community adventure\",\r\n    \"eventImageURL\": \"https://www.visitsingapore.com/content/dam/desktop/global/see-do-singapore/recreation-leisure/marina-bay-sands-carousel01-square.jpg\",\r\n    \"eventAddress\": \"event@running.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/event/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"event",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comment/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comment",
+						"1"
 					]
 				}
 			},

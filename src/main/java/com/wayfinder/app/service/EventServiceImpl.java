@@ -6,28 +6,24 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.wayfinder.app.dao.EventDao;
-import com.wayfinder.app.entity.Event;
+import com.wayfinder.app.dao.CommentDao;
+import com.wayfinder.app.entity.Comment;
 @Service
-public class EventServiceImpl implements EventService{
+public class EventServiceImpl implements CommentService{
 	@Resource 
-	EventDao eventDao;
-
+	CommentDao commentDao;
+	
 	@Override
-	public List<Event> findAll() {
-		return eventDao.findAll();
+	public List<Comment> findByEventId(int eventId) {
+		return commentDao.findByEventId(eventId);
 	}
 	@Override
-	public void insertEvent(Event eve){
-		eventDao.insertEvent(eve);
+	public void insertComment(Comment comment){
+		commentDao.insertComment(comment);;
 	}
 	@Override
-	public void executeUpdateEvent(Event eve) {
-		eventDao.executeUpdateEvent(eve);
-	}
-	@Override
-	public void deleteEvent(int id) {
-		eventDao.deleteEvent(id);
+	public void deleteComment(int commentId) {
+		commentDao.deleteComment(commentId);;
 	}
 	
 }

@@ -81,7 +81,6 @@ public class EventDaoImpl implements EventDao{
 	public void deleteEvent(int id) {
 		 final String sql = "delete from events where eventId=:eventId";
 			 
-
 		 Map<String,Object> map=new HashMap<String,Object>();  
 		 map.put("eventId", id);
 	

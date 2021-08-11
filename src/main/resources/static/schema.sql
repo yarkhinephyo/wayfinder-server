@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS events, users;
+DROP TABLE IF EXISTS events, users, comments;
 
 CREATE TABLE users
 (
@@ -21,4 +21,16 @@ CREATE TABLE events
   eventAddress varchar(100) NOT NULL,
   PRIMARY KEY (eventId),
   CONSTRAINT fk_event_user FOREIGN KEY (userName) REFERENCES users (userName)
+);
+
+CREATE TABLE comments
+(
+  commentId integer GENERATED ALWAYS AS IDENTITY,
+  commenterName varchar(50) NOT NULL,
+  eventId integer NOT NULL,
+  commentUnixTime bigint NOT NULL,
+  commentString varchar(300) NOT NULL,
+  PRIMARY KEY (commentId),
+  CONSTRAINT fk_comment_event FOREIGN KEY (eventId) REFERENCES events (eventId),
+  CONSTRAINT fk_comment_user FOREIGN KEY (commenterName) REFERENCES users (userName)
 );
