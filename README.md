@@ -18,7 +18,7 @@ docker run --rm -e POSTGRES_PASSWORD=password -e POSTGRES_DB=wayfinder -e POSTGR
 
 
 2. To run the Spring Boot application locally, execute the `main` method in the `com.wayfinder.app.Application` class from your IDE.
-3. Test the endpoints with Postman collections
+3. Test the endpoints with [Postman collections](postman/Wayfinder.postman_collection.json) (Refer to [docs](docs/README.md))
 
 ## Deployment Configurations
 Edit the configurations accordingly at `src/main/resources/application-default.properties`
